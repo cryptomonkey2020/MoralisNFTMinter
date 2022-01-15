@@ -42,7 +42,7 @@ async function submit(){
   let metadata = {
     name: document.querySelector("#input_name").value,
     description: document.querySelector("#input_description").value,
-    image: "/ipfs" + imageHash
+    image: "/ipfs/" + imageHash
   }
   
   //IPFS Metadata upload
@@ -60,6 +60,15 @@ async function submit(){
     royaltiesAmount: 5,
   })
   console.log(res);
+  let token_address = res.data.result.tokenAddress;
+  let token_id = res.data.result.tokenId;
+  let url = `https://rinkeby.rarible.com/token/${token_address}:${token_id}`
+  document.querySelector("#success_message").innerHTML = 
+    ` NFT Minted ! <a target="_blank" href="${url}">View NFT</a>`
+  document.querySelector("#success_message").style.display = "block";
+  setTimeout(() => {
+    document.querySelector("#success_message").style.display = "none";
+  },50000)
   //https://rinkeby.rarible.com/token/TOKEN_ADDRESS:TOKEN_ID
 
 }

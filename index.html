@@ -16,7 +16,7 @@
       }
       #app{
         margin-top: 10px;
-        height: 300px;
+        height: 350px;
         background-color: white;
         border-radius: 20px;
         padding: 20px;
@@ -30,7 +30,14 @@
         color: white;
         font-size: 65px;
         margin-top: 20px;
-
+      }
+      #success_message{
+        font-size: 20px;
+        background-color:floralwhite; 
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid green;
+        display: none;
       }
     </style>
   </head>
@@ -40,6 +47,7 @@
         <div class="row"> 
           <div class="title">NFT Minter</div>
           <div id="app" class="col-md-6 offset-md-3">
+            <div id="success_message"></div>
             <div class="form_element">
               <input class="form-control" type="text" id="input_name" name="name" placeholder="NFT Name">
             </div>
@@ -56,6 +64,6 @@
     </div>
 
 
-    <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./main1.js"></script>
   </body>
 </html>
