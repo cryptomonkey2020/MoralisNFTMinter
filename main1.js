@@ -52,16 +52,16 @@ async function submit(){
   let metadataHash = jsonFile.hash();
   console.log(metadataHash);
 
-  //Rarible upload 
-  //let res = await Moralis.Plugins.rarible.lazyMint({
-  //  chain: 'rinkeby',
-  //  userAddress: user.get("ethAddress"),
-   // tokenType: 'ERC721',
-  //  tokenUri: '/ipfs/' + metadataHash, 
-  //  royaltiesAmount: 5,
-  //})
+  Rarible upload 
+  let res = await Moralis.Plugins.rarible.lazyMint({
+    chain: 'rinkeby',
+    userAddress: user.get("ethAddress"),
+    tokenType: 'ERC721',
+    tokenUri: '/ipfs/' + metadataHash, 
+    royaltiesAmount: 5,
+  })
 
-  
+
   console.log(res);
   let token_address = res.data.result.tokenAddress;
   let token_id = res.data.result.tokenId;
