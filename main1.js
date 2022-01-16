@@ -37,6 +37,7 @@ async function submit(){
   const imageFile = new Moralis.File(data.name, data);
   await imageFile.saveIPFS();
   let imageHash = imageFile.hash(); 
+  console.log(imageHash);
   
   //Metadata creation
   let metadata = {
@@ -52,13 +53,15 @@ async function submit(){
   console.log(metadataHash);
 
   //Rarible upload 
-  let res = await Moralis.Plugins.rarible.lazyMint({
-    chain: 'rinkeby',
-    userAddress: user.get("ethAddress"),
-    tokenType: 'ERC721',
-    tokenUri: '/ipfs/' + metadataHash, 
-    royaltiesAmount: 5,
-  })
+  //let res = await Moralis.Plugins.rarible.lazyMint({
+  //  chain: 'rinkeby',
+  //  userAddress: user.get("ethAddress"),
+   // tokenType: 'ERC721',
+  //  tokenUri: '/ipfs/' + metadataHash, 
+  //  royaltiesAmount: 5,
+  //})
+
+  
   console.log(res);
   let token_address = res.data.result.tokenAddress;
   let token_id = res.data.result.tokenId;
@@ -69,7 +72,7 @@ async function submit(){
   setTimeout(() => {
     document.querySelector("#success_message").style.display = "none";
   },50000)
-  //https://rinkeby.rarible.com/token/TOKEN_ADDRESS:TOKEN_ID
+//https://rinkeby.rarible.com/token/TOKEN_ADDRESS:TOKEN_ID
 
 }
 
